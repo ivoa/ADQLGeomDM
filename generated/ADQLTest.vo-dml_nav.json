@@ -1,0 +1,20 @@
+
+
+            {
+            "adqltest model": [
+            {
+            "Overview": "generated/ADQLTest.vo-dml.md"
+            }
+
+            
+                ,{
+                "ObjectTypes": [
+
+                {"ATest" : "generated/adqltest/ATest.md"}
+                ]
+                }
+            
+            ]
+            }
+
+        

@@ -1,0 +1,59 @@
+
+digraph GVmap {  
+	label = "\n\nadqlgeom data model"
+	rankdir=TB
+	
+	node [ 
+	  shape=tab
+	  style=filled
+	]
+	subgraph cluster_packages {
+	  label="Model"
+	  rankdir=TB
+      style=filled
+      fillcolor="/set312/1"
+	  
+	}
+	
+	node [
+	shape=record
+	fontsize=8
+	style=filled] 
+    "adqlgeom:Point" [
+    URL="../adqlgeom/Point"
+    label = "{&lt;&lt;datatype&gt;&gt;\nPoint|+alpha : ivoa:real\l+delta : ivoa:real\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "adqlgeom:Shape" [
+    URL="../adqlgeom/Shape"
+    label = "{&lt;&lt;datatype&gt;&gt;\nShape}"
+    fillcolor="/set312/1"
+    ] ;
+  "adqlgeom:Circle" [
+    URL="../adqlgeom/Circle"
+    label = "{&lt;&lt;datatype&gt;&gt;\nCircle|+center : adqlgeom:Point\l+radius : ivoa:real\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "adqlgeom:MultiShape" [
+    URL="../adqlgeom/MultiShape"
+    label = "{&lt;&lt;datatype&gt;&gt;\nMultiShape|+shapes : adqlgeom:Shape\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "adqlgeom:Polygon" [
+    URL="../adqlgeom/Polygon"
+    label = "{&lt;&lt;datatype&gt;&gt;\nPolygon|+points : adqlgeom:Point\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "adqlgeom:Interval" [
+    URL="../adqlgeom/Interval"
+    label = "{&lt;&lt;datatype&gt;&gt;\nInterval|+lower : ivoa:real\l+upper : ivoa:real\l}"
+    fillcolor="/set312/1"
+    ] ;
+  
+ 
+    edge [color="red", arrowtail="none", arrowhead="empty"]
+    "adqlgeom:Circle" -> "adqlgeom:Shape" ;
+  "adqlgeom:Polygon" -> "adqlgeom:Shape" ;
+    
+}
+  

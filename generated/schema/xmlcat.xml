@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+   <system systemId="ADQLGeomDM-v1.vo-dml.xsd"
+           uri="http://ivoa.net/dm/adqlgeom/v0.1"/>
+   <system systemId="ADQLTest.vo-dml.xsd" uri="http://ivoa.net/dm/adql/test/v0.1"/>
+</catalog>

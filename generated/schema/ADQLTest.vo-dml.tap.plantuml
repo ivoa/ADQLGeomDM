@@ -1,0 +1,35 @@
+
+
+@startuml
+
+' hide the spot
+' hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+        
+entity "ATest" as ATest {
+
+    ID : BIGINT
+
+---
+
+    apoint_alpha : DOUBLE
+apoint_delta : DOUBLE
+acircle_center_alpha : DOUBLE
+acircle_center_delta : DOUBLE
+acircle_radius : DOUBLE
+apoly_points_alpha : DOUBLE
+apoly_points_delta : DOUBLE
+aninterval_lower : DOUBLE
+aninterval_upper : DOUBLE
+
+}
+
+
+        
+
+
+@enduml
+
+    

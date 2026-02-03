@@ -1,0 +1,2 @@
+https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json ADQLGeomDM-v1.vo-dml.json
+https://ivoa.net/dm/ADQLTest.vo-dml.json ADQLTest.vo-dml.json

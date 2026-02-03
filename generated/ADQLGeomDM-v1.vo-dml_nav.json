@@ -1,0 +1,19 @@
+
+
+            {
+            "adqlgeom model": [
+            {
+            "Overview": "generated/ADQLGeomDM-v1.vo-dml.md"
+            }
+
+            
+                ,{
+                "DataTypes": [
+                {"Circle" : "generated/adqlgeom/Circle.md"},{"Interval" : "generated/adqlgeom/Interval.md"},{"MultiShape" : "generated/adqlgeom/MultiShape.md"},{"Point" : "generated/adqlgeom/Point.md"},{"Polygon" : "generated/adqlgeom/Polygon.md"},{"Shape" : "generated/adqlgeom/Shape.md"}
+                ]
+                }
+            
+            ]
+            }
+
+        

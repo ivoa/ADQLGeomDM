@@ -1,0 +1,31 @@
+- adqltest model:
+  - Overview: "generated/ADQLTest.vo-dml.md"
+  - ObjectTypes:
+    - ATest: "generated/adqltest/ATest.md"
+- adqlgeom model:
+  - Overview: "generated/ADQLGeomDM-v1.vo-dml.md"
+  - DataTypes:
+    - Circle: "generated/adqlgeom/Circle.md"
+    - Interval: "generated/adqlgeom/Interval.md"
+    - MultiShape: "generated/adqlgeom/MultiShape.md"
+    - Point: "generated/adqlgeom/Point.md"
+    - Polygon: "generated/adqlgeom/Polygon.md"
+    - Shape: "generated/adqlgeom/Shape.md"
+- Imported Models:
+  - ivoa model:
+    - Overview: "generated/IVOA-v1.0.vo-dml.md"
+    - DataTypes:
+      - IntegerQuantity: "generated/ivoa/IntegerQuantity.md"
+      - Quantity: "generated/ivoa/Quantity.md"
+      - RealQuantity: "generated/ivoa/RealQuantity.md"
+    - PrimitiveTypes:
+      - Unit: "generated/ivoa/Unit.md"
+      - anyURI: "generated/ivoa/anyURI.md"
+      - boolean: "generated/ivoa/boolean.md"
+      - complex: "generated/ivoa/complex.md"
+      - datetime: "generated/ivoa/datetime.md"
+      - integer: "generated/ivoa/integer.md"
+      - nonnegativeInteger: "generated/ivoa/nonnegativeInteger.md"
+      - rational: "generated/ivoa/rational.md"
+      - real: "generated/ivoa/real.md"
+      - string: "generated/ivoa/string.md"

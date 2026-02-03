@@ -1,0 +1,139 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json",
+  "title" : "",
+  "description" : "The geometry types in ADQL",
+  "type" : "object",
+  "properties" : {
+    "AdqlgeomModel" : {
+      "type" : "object",
+      "properties" : {
+        "refs" : {
+          "type" : "object",
+          "properties" : {
+            "$comment" : "placeholder to make commas easier!"
+          },
+          "additionalProperties" : false
+        },
+        "content" : {
+          "type" : "array",
+          "items" : {
+            "anyOf" : [ ]
+          },
+          "additionalProperties" : false
+        }
+      },
+      "additionalProperties" : false
+    }
+  },
+  "$defs" : {
+    "$comment" : "placeholder to make commas easier!",
+    "Point" : {
+      "type" : "object",
+      "description" : "location on the sky in spherical coordinates",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "alpha" : {
+          "type" : "number",
+          "built-in" : "true",
+          "description" : "longitude angle"
+        },
+        "delta" : {
+          "type" : "number",
+          "built-in" : "true",
+          "description" : "latitude angle"
+        }
+      },
+      "required" : [ "alpha", "delta" ],
+      "additionalProperties" : false
+    },
+    "Shape" : {
+      "type" : "object",
+      "description" : "base type of all shapes",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "@type" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "@type" ]
+    },
+    "Circle" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "a circular region on the sky",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "center" : {
+            "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+            "description" : "the centre of the circle"
+          },
+          "radius" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : "the radius of the circle"
+          }
+        },
+        "required" : [ "center", "radius" ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "MultiShape" : {
+      "type" : "object",
+      "description" : "multiple simple shapes describing regions as a single value",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "shapes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+          },
+          "description" : ""
+        }
+      },
+      "required" : [ "shapes" ],
+      "additionalProperties" : false
+    },
+    "Polygon" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "a simple polygon region on the sky defined a sequence of points connected by great-circle segments",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "points" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point"
+            },
+            "description" : ""
+          }
+        },
+        "required" : [ ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "Interval" : {
+      "type" : "object",
+      "description" : "a set of numeric values defined by a lower and upper bound (bounds included: [a,b])",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "lower" : {
+          "type" : "number",
+          "built-in" : "true",
+          "description" : ""
+        },
+        "upper" : {
+          "type" : "number",
+          "built-in" : "true",
+          "description" : ""
+        }
+      },
+      "required" : [ "lower", "upper" ],
+      "additionalProperties" : false
+    }
+  }
+}

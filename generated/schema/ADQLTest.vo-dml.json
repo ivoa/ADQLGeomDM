@@ -1,0 +1,67 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://ivoa.net/dm/ADQLTest.vo-dml.json",
+  "title" : "",
+  "description" : "temporary model to explore the use of the ADQL Types",
+  "type" : "object",
+  "properties" : {
+    "AdqltestModel" : {
+      "type" : "object",
+      "properties" : {
+        "refs" : {
+          "type" : "object",
+          "properties" : {
+            "$comment" : "placeholder to make commas easier!"
+          },
+          "additionalProperties" : false
+        },
+        "content" : {
+          "type" : "array",
+          "items" : {
+            "anyOf" : [ {
+              "$ref" : "https://ivoa.net/dm/ADQLTest.vo-dml.json#/$defs/ATest"
+            } ]
+          },
+          "additionalProperties" : false
+        }
+      },
+      "additionalProperties" : false
+    }
+  },
+  "$defs" : {
+    "$comment" : "placeholder to make commas easier!",
+    "ATest" : {
+      "type" : "object",
+      "description" : "Just for testing",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "apoint" : {
+          "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+          "description" : ""
+        },
+        "acircle" : {
+          "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Circle",
+          "description" : ""
+        },
+        "apoly" : {
+          "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Polygon",
+          "description" : ""
+        },
+        "aninterval" : {
+          "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Interval",
+          "description" : ""
+        },
+        "_id" : {
+          "type" : "integer",
+          "description" : "surrogate key"
+        }
+      },
+      "required" : [ "apoint", "acircle", "apoly", "aninterval" ],
+      "additionalProperties" : false
+    }
+  }
+}
