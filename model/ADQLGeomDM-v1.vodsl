@@ -1,0 +1,37 @@
+model adqlgeom (1.0) "The geometry types in ADQL"
+  author "Paul Harrison"
+  
+  include "../build/tmp/IVOA-v1.0.vodsl"
+  
+  dtype Point  "location on the sky in spherical coordinates"
+    {
+          alpha: ivoa:real  "longitude angle";
+          delta: ivoa:real "latitude angle";
+    }
+
+  abstract dtype Shape "base type of all shapes"
+    {
+
+    }
+
+  dtype Circle  -> Shape "a circular region on the sky"
+    {
+          center: Point  "the centre of the circle";
+          radius: ivoa:real  "the radius of the circle";
+    }
+
+  dtype MultiShape  "multiple simple shapes describing regions as a single value"
+    {
+          shapes: Shape  @+  "";
+    }
+
+  dtype Polygon  -> Shape "a simple polygon region on the sky defined a sequence of points connected by great-circle segments"
+    {
+          points: Point @[3..-1] "";
+    }
+//IMPL - this is actually from DALI
+dtype Interval  "a set of numeric values defined by a lower and upper bound (bounds included: [a,b])"
+  {
+        lower: ivoa:real  "";
+        upper: ivoa:real "";
+  }

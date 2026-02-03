@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 https://www.ivoa.net/xml/VODML/vo-dml-v1.xsd" 
+              vodmlVersion="1.1">	<!-- file generated from VODSL - needs validatation against v1.1 of schema  --> 
+      <name>adqlgeom</name>
+      <description>The geometry types in ADQL</description> 
+      <uri/>
+      <title></title>
+      <author>Paul Harrison</author>
+      <version>1.0</version>
+      <lastModified>2026-02-03T11:34:45Z</lastModified>
+      <import>
+        <name>ivoa</name>
+        <version>1.0</version>
+        <url>IVOA-v1.0.vo-dml.xml</url>
+        <documentationURL>not known</documentationURL>
+      </import>
+            <dataType>
+              <vodml-id>Point</vodml-id>
+              <name>Point</name>
+              <description>location on the sky in spherical coordinates</description>	    
+            <attribute>
+              <vodml-id>Point.alpha</vodml-id>
+              <name>alpha</name>
+              <description>longitude angle</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Point.delta</vodml-id>
+              <name>delta</name>
+              <description>latitude angle</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType abstract="true">
+              <vodml-id>Shape</vodml-id>
+              <name>Shape</name>
+              <description>base type of all shapes</description>	    
+            </dataType>
+            <dataType>
+              <vodml-id>Circle</vodml-id>
+              <name>Circle</name>
+              <description>a circular region on the sky</description>	    
+               <extends>
+                  <vodml-ref>adqlgeom:Shape</vodml-ref>
+               </extends>
+            <attribute>
+              <vodml-id>Circle.center</vodml-id>
+              <name>center</name>
+              <description>the centre of the circle</description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Circle.radius</vodml-id>
+              <name>radius</name>
+              <description>the radius of the circle</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
+              <vodml-id>MultiShape</vodml-id>
+              <name>MultiShape</name>
+              <description>multiple simple shapes describing regions as a single value</description>	    
+            <attribute>
+              <vodml-id>MultiShape.shapes</vodml-id>
+              <name>shapes</name>
+              <description></description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Shape</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>-1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
+              <vodml-id>Polygon</vodml-id>
+              <name>Polygon</name>
+              <description>a simple polygon region on the sky defined a sequence of points connected by great-circle segments</description>	    
+               <extends>
+                  <vodml-ref>adqlgeom:Shape</vodml-ref>
+               </extends>
+            <attribute>
+              <vodml-id>Polygon.points</vodml-id>
+              <name>points</name>
+              <description></description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>3</minOccurs>
+                <maxOccurs>3</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
+              <vodml-id>Interval</vodml-id>
+              <name>Interval</name>
+              <description>a set of numeric values defined by a lower and upper bound (bounds included: [a,b])</description>	    
+            <attribute>
+              <vodml-id>Interval.lower</vodml-id>
+              <name>lower</name>
+              <description></description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Interval.upper</vodml-id>
+              <name>upper</name>
+              <description></description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+</vo-dml:model>

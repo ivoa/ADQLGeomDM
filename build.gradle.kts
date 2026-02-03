@@ -7,7 +7,7 @@ plugins {
 vodml {
     vodmlDir.set(file("vo-dml"))
     vodslDir.set(file("model"))
-    bindingFiles.setFrom(file("vo-dml/TemplateDM-v1.vodml-binding.xml"))
+    bindingFiles.setFrom(file("vo-dml/ADQLGeomDM-v1.vodml-binding.xml"))
     outputDocDir.set(layout.projectDirectory.dir("doc/std/vodml-generated"))
     outputSiteDir.set(layout.projectDirectory.dir("doc/site/generated")) // N.B the last part of this path must be "generated"
 
