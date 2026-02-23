@@ -6,6 +6,10 @@
         <file>ADQLGeomDM-v1.vo-dml.xml</file> <!-- this is the local file name -->
         <java-package>org.ivoa.dm.adqlgeom</java-package> <!-- the java package for the generated code -->
         <xml-targetnamespace prefix="adqlgeom">http://ivoa.net/dm/adqlgeom/v0.1</xml-targetnamespace>
+        <type-mapping>
+            <vodml-id>Point</vodml-id>
+            <java-type>org.javastro.ivoacore.pgsphere.types.Point</java-type>
+        </type-mapping>
     </model>
     <model>
         <name>adqltest</name>

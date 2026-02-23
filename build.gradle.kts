@@ -1,6 +1,6 @@
 plugins {
     // this plugin provides all the vo-dml functionality
-    id("net.ivoa.vo-dml.vodmltools") version "0.5.29"
+    id("net.ivoa.vo-dml.vodmltools") version "0.5.30"
  //   id("org.kordamp.gradle.jandex") version "1.1.0"
 }
 
@@ -32,6 +32,7 @@ dependencies {
     //all data models will want to depend on the base model at least
 
     api("net.ivoa.vo-dml:ivoa-base:1.0-SNAPSHOT") //use API if model exposes any of these base types in API
+    api("org.javastro.ivoa.core:pgsphere:0.9-SNAPSHOT")
 
     // the dependencies below are related to testing
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
