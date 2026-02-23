@@ -4,12 +4,12 @@
               xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 https://www.ivoa.net/xml/VODML/vo-dml-v1.xsd" 
               vodmlVersion="1.1">	<!-- file generated from VODSL - needs validatation against v1.1 of schema  --> 
       <name>adqlgeom</name>
-      <description>The geometry types in ADQL</description> 
+      <description>The geometry types in ADQL/PGSphere</description> 
       <uri/>
       <title></title>
       <author>Paul Harrison</author>
       <version>1.0</version>
-      <lastModified>2026-02-03T11:34:45Z</lastModified>
+      <lastModified>2026-02-18T16:16:54Z</lastModified>
       <import>
         <name>ivoa</name>
         <version>1.0</version>
@@ -38,6 +38,35 @@
               <description>latitude angle</description>	    
               <datatype>
                  <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
+              <vodml-id>Line</vodml-id>
+              <name>Line</name>
+              <description>A line defined on the celestial sphere. If the distance between begin and end is 180° (π), this function returns an error because the location of the line is undefined. However, if longitudes of begin and end are equal, pgSphere assumes a meridian and returns the corresponding spherical line.</description>	    
+            <attribute>
+              <vodml-id>Line.begin</vodml-id>
+              <name>begin</name>
+              <description>start point of line</description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Line.end</vodml-id>
+              <name>end</name>
+              <description>end point of line</description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Point</vodml-ref>
               </datatype>
               <multiplicity>
                 <minOccurs>1</minOccurs>
@@ -83,6 +112,62 @@
             </attribute>
             </dataType>
             <dataType>
+              <vodml-id>Ellipse</vodml-id>
+              <name>Ellipse</name>
+              <description>an elliptical region on the sky</description>	    
+               <extends>
+                  <vodml-ref>adqlgeom:Shape</vodml-ref>
+               </extends>
+            <attribute>
+              <vodml-id>Ellipse.major_axis</vodml-id>
+              <name>major_axis</name>
+              <description>major axis size in radians</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Ellipse.minor_axis</vodml-id>
+              <name>minor_axis</name>
+              <description>minor axis size in radians</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Ellipse.center</vodml-id>
+              <name>center</name>
+              <description>the centre of the circle</description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Ellipse.pos_angle</vodml-id>
+              <name>pos_angle</name>
+              <description>The position angle pos is defined as a counterclockwise rotation around the ellipse center and is zero, if the ellipse is “parallel to the equator”</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
               <vodml-id>MultiShape</vodml-id>
               <name>MultiShape</name>
               <description>multiple simple shapes describing regions as a single value</description>	    
@@ -109,13 +194,45 @@
             <attribute>
               <vodml-id>Polygon.points</vodml-id>
               <name>points</name>
-              <description></description>	    
+              <description>the points that make up the polygon</description>	    
               <datatype>
                  <vodml-ref>adqlgeom:Point</vodml-ref>
               </datatype>
               <multiplicity>
-                <minOccurs>3</minOccurs>
-                <maxOccurs>3</maxOccurs>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>-1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
+              <vodml-id>Box</vodml-id>
+              <name>Box</name>
+              <description>a simple bounding box</description>	    
+               <extends>
+                  <vodml-ref>adqlgeom:Shape</vodml-ref>
+               </extends>
+            <attribute>
+              <vodml-id>Box.pos_sw</vodml-id>
+              <name>pos_sw</name>
+              <description>south-west edge of the box</description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Box.pos_ne</vodml-id>
+              <name>pos_ne</name>
+              <description>north-east edge of the box</description>	    
+              <datatype>
+                 <vodml-ref>adqlgeom:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
               </multiplicity>
             </attribute>
             </dataType>

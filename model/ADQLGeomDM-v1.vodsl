@@ -1,4 +1,4 @@
-model adqlgeom (1.0) "The geometry types in ADQL"
+model adqlgeom (1.0) "The geometry types in ADQL/PGSphere"
   author "Paul Harrison"
   
   include "../build/tmp/IVOA-v1.0.vodsl"
@@ -8,6 +8,14 @@ model adqlgeom (1.0) "The geometry types in ADQL"
           alpha: ivoa:real  "longitude angle";
           delta: ivoa:real "latitude angle";
     }
+
+   dtype Line  "A line defined on the celestial sphere. If the distance between begin and end is 180° (π), this function returns an error because the location of the line is undefined. However, if longitudes of begin and end are equal, pgSphere assumes a meridian and returns the corresponding spherical line."
+      {
+            begin: Point  "start point of line";
+            end: Point "end point of line";
+      }
+
+
 
   abstract dtype Shape "base type of all shapes"
     {
@@ -20,6 +28,15 @@ model adqlgeom (1.0) "The geometry types in ADQL"
           radius: ivoa:real  "the radius of the circle";
     }
 
+   dtype Ellipse  -> Shape "an elliptical region on the sky"
+        {
+              major_axis: ivoa:real "major axis size in radians";
+              minor_axis: ivoa:real "minor axis size in radians";
+              center: Point  "the centre of the circle";
+              pos_angle: ivoa:real  "The position angle pos is defined as a counterclockwise rotation around the ellipse center and is zero, if the ellipse is “parallel to the equator”";
+        }
+
+
   dtype MultiShape  "multiple simple shapes describing regions as a single value"
     {
           shapes: Shape  @+  "";
@@ -27,8 +44,13 @@ model adqlgeom (1.0) "The geometry types in ADQL"
 
   dtype Polygon  -> Shape "a simple polygon region on the sky defined a sequence of points connected by great-circle segments"
     {
-          points: Point @[3..-1] "";
+          points: Point @+ "the points that make up the polygon"; // would like the multiplicity to be @[3..-1] but see https://github.com/pahjbo/vodsl/issues/27
     }
+  dtype Box -> Shape "a simple bounding box"
+  {
+      pos_sw : Point "south-west edge of the box";
+      pos_ne : Point "north-east edge of the box";
+  }
 //IMPL - this is actually from DALI
 dtype Interval  "a set of numeric values defined by a lower and upper bound (bounds included: [a,b])"
   {
