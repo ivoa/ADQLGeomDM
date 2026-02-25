@@ -1,9 +1,8 @@
 
   package net.ivoa.dm.adqlgeom.test;
 
-    
-    
-/**
+
+  /**
 * Just for testing.
 *
 * objectType:  ATest
@@ -74,13 +73,8 @@
         @org.eclipse.microprofile.openapi.annotations.media.Schema(description="")
     
     @jakarta.xml.bind.annotation.XmlElement( name = "apoint", required =true, type = org.javastro.ivoacore.pgsphere.types.Point.class)
-            
-                  @jakarta.persistence.Embedded
-                      
-        @jakarta.persistence.AttributeOverrides( {
-        @jakarta.persistence.AttributeOverride(name="", column = @jakarta.persistence.Column(name="apoint",nullable = false ))
-        })
-        
+
+
     protected org.javastro.ivoacore.pgsphere.types.Point apoint;
         
 
@@ -246,7 +240,7 @@
         * @param pApoint value to set
         * @return ATest
         */
-        public net.ivoa.dm.adqlgeom.test.ATest withApoint(final org.javastro.ivoacore.pgsphere.types.Point pApoint) {
+        public ATest withApoint(final org.javastro.ivoacore.pgsphere.types.Point pApoint) {
         setApoint(pApoint);
         return this;
         }
@@ -276,7 +270,7 @@
         * @param pAcircle value to set
         * @return ATest
         */
-        public net.ivoa.dm.adqlgeom.test.ATest withAcircle(final org.ivoa.dm.adqlgeom.Circle pAcircle) {
+        public ATest withAcircle(final org.ivoa.dm.adqlgeom.Circle pAcircle) {
         setAcircle(pAcircle);
         return this;
         }
@@ -306,7 +300,7 @@
         * @param pApoly value to set
         * @return ATest
         */
-        public net.ivoa.dm.adqlgeom.test.ATest withApoly(final org.ivoa.dm.adqlgeom.Polygon pApoly) {
+        public ATest withApoly(final org.ivoa.dm.adqlgeom.Polygon pApoly) {
         setApoly(pApoly);
         return this;
         }
@@ -336,7 +330,7 @@
         * @param pAninterval value to set
         * @return ATest
         */
-        public net.ivoa.dm.adqlgeom.test.ATest withAninterval(final org.ivoa.dm.adqlgeom.Interval pAninterval) {
+        public ATest withAninterval(final org.ivoa.dm.adqlgeom.Interval pAninterval) {
         setAninterval(pAninterval);
         return this;
         }

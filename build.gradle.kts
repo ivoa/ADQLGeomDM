@@ -41,9 +41,11 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.32")
     testRuntimeOnly("ch.qos.logback:logback-classic:1.5.13")
 
-    testImplementation("com.h2database:h2:2.2.220")
     testImplementation("org.javastro:jaxbjpa-utils:0.2.3")
     testImplementation("org.javastro:jaxbjpa-utils:0.2.3:test")
+    testImplementation("org.geolatte:geolatte-geom:1.9.0")
+    implementation("org.hibernate.orm:hibernate-spatial:6.5.3.Final")
+    testImplementation("org.orbisgis:h2gis:2.2.5")
 }
 
 

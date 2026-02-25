@@ -8,6 +8,11 @@
           attributeFormDefault=XmlNsForm.UNQUALIFIED, xmlns = {
 @jakarta.xml.bind.annotation.XmlNs(namespaceURI = "http://ivoa.net/dm/adql/test/v0.1", prefix = "adqlt")
   })
+@ConverterRegistrations({
+      @ConverterRegistration(converter = PointConverter.class, autoApply = true)
+})
 package net.ivoa.dm.adqlgeom.test;
 import jakarta.xml.bind.annotation.XmlNsForm;
+import org.hibernate.annotations.ConverterRegistration;
+import org.hibernate.annotations.ConverterRegistrations;
       

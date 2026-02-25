@@ -1,16 +1,11 @@
 
     package net.ivoa.dm.adqlgeom.test;
-    import java.io.IOException;
     import java.util.List;
-    import java.util.Set;
     import java.util.Map;
-    import java.util.Collection;
     import java.util.ArrayList;
     import java.util.HashMap;
-    import java.util.HashSet;
     import java.util.stream.Collectors;
     import java.util.stream.Stream;
-    import java.util.AbstractMap;
 
     import jakarta.xml.bind.JAXBContext;
     import jakarta.xml.bind.annotation.XmlElement;
@@ -24,8 +19,6 @@
     import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
     import com.fasterxml.jackson.annotation.JsonTypeInfo;
     import com.fasterxml.jackson.databind.ObjectMapper;
-    import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
-    import com.fasterxml.jackson.annotation.JsonProperty;
 
     import org.ivoa.vodml.jaxb.XmlIdManagement;
     import org.ivoa.vodml.ModelManagement;
@@ -79,7 +72,7 @@
     @XmlElements(value = {
       
         @XmlElement(name="aTest",
-               type = net.ivoa.dm.adqlgeom.test.ATest.class)
+               type = ATest.class)
                     
     })
         
@@ -135,7 +128,7 @@
       * add ATest to model.
       * @param c  net.ivoa.dm.adqlgeom.test.ATest
           */
-          public void addContent( final net.ivoa.dm.adqlgeom.test.ATest c)
+          public void addContent( final ATest c)
       {
       content.add(c);
       
@@ -144,7 +137,7 @@
           * remove ATest from model.
           *  @param c  net.ivoa.dm.adqlgeom.test.ATest
           */
-      public void deleteContent( final net.ivoa.dm.adqlgeom.test.ATest c)
+      public void deleteContent( final ATest c)
       {
       content.remove(c);
       
@@ -301,7 +294,7 @@
         
         retval.put("adqlgeom:Interval", org.ivoa.dm.adqlgeom.Interval.class);
         
-        retval.put("adqltest:ATest", net.ivoa.dm.adqlgeom.test.ATest.class);
+        retval.put("adqltest:ATest", ATest.class);
         
         retval.put("ivoa:IntegerQuantity", org.ivoa.dm.ivoa.IntegerQuantity.class);
         
@@ -345,7 +338,7 @@
         public  java.util.List<Class> contentClasses()
         {
         return java.util.List.of(
-        net.ivoa.dm.adqlgeom.test.ATest.class
+        ATest.class
         );
         }
 

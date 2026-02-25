@@ -1,10 +1,13 @@
-package org.ivoa.dm.adqlgeom;
+package org.ivoa.dm.adqlgeom.tests;
 /*
  * Created on 10/05/2023 by Paul Harrison (paul.harrison@manchester.ac.uk).
  */
 
 import net.ivoa.dm.adqlgeom.test.AdqltestModel;
-import org.ivoa.vodml.testing.AutoRoundTripWithValidationTest;
+import org.ivoa.dm.adqlgeom.Circle;
+import org.ivoa.dm.adqlgeom.Interval;
+import org.ivoa.dm.adqlgeom.Polygon;
+import org.ivoa.vodml.testing.AutoDBRoundTripTest;
 import net.ivoa.dm.adqlgeom.test.ATest;
 import org.junit.jupiter.api.Assertions;
 import org.javastro.ivoacore.pgsphere.types.Point;
@@ -13,7 +16,7 @@ import java.util.List;
 /**
  * This will run a XML and JSON round trip test on the model inst
  */
-public class AdqlgeomModelTest extends AutoRoundTripWithValidationTest<AdqltestModel> {
+public class AdqlgeomModelTest extends AutoDBRoundTripTest<AdqltestModel, Long, ATest> {
 
    private ATest atest;
 
@@ -47,4 +50,14 @@ public class AdqlgeomModelTest extends AutoRoundTripWithValidationTest<AdqltestM
        Assertions.assertTrue(atestread.getApoly().equals(atest.getApoly()));
 
     }
+
+   @Override
+   public ATest entityForDb() {
+      return atest;
+   }
+
+   @Override
+   public void testEntity(ATest e) {
+      //TODO actually run some tests
+   }
 }

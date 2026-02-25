@@ -8,7 +8,7 @@
         <xml-targetnamespace prefix="adqlgeom">http://ivoa.net/dm/adqlgeom/v0.1</xml-targetnamespace>
         <type-mapping>
             <vodml-id>Point</vodml-id>
-            <java-type>org.javastro.ivoacore.pgsphere.types.Point</java-type>
+            <java-type jpa-atomic="true">org.javastro.ivoacore.pgsphere.types.Point</java-type>
             <tap-type>Point</tap-type>
         </type-mapping>
     </model>
