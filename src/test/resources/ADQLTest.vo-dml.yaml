@@ -1,0 +1,30 @@
+components:
+  schemas:
+    ATest:
+      type: "object"
+      description: "Just for testing"
+      properties:
+        '@type':
+          type: "string"
+          description: "UType as type discriminator"
+        apoint:
+          $ref: "#/components/schemas/Point"
+          description: ""
+        acircle:
+          $ref: "#/components/schemas/Circle"
+          description: ""
+        apoly:
+          $ref: "#/components/schemas/Polygon"
+          description: ""
+        aninterval:
+          $ref: "#/components/schemas/Interval"
+          description: ""
+        _id:
+          type: "integer"
+          description: "surrogate key"
+      required:
+      - "apoint"
+      - "acircle"
+      - "apoly"
+      - "aninterval"
+      additionalProperties: false

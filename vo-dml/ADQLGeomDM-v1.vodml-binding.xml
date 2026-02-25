@@ -9,12 +9,7 @@
         <type-mapping>
             <vodml-id>Point</vodml-id>
             <java-type>org.javastro.ivoacore.pgsphere.types.Point</java-type>
+            <tap-type>Point</tap-type>
         </type-mapping>
-    </model>
-    <model>
-        <name>adqltest</name>
-        <file>ADQLTest.vo-dml.xml</file>
-        <java-package>net.ivoa.dm.adqlgeom.test</java-package>
-        <xml-targetnamespace prefix="adqlt">http://ivoa.net/dm/adql/test/v0.1</xml-targetnamespace>
     </model>
 </m:mappedModels>
