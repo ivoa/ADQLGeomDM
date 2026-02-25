@@ -9,6 +9,7 @@ import org.ivoa.dm.adqlgeom.Interval;
 import org.ivoa.dm.adqlgeom.Polygon;
 import org.ivoa.vodml.testing.AutoDBRoundTripTest;
 import net.ivoa.dm.adqlgeom.test.ATest;
+import org.ivoa.vodml.testing.AutoRoundTripWithValidationTest;
 import org.junit.jupiter.api.Assertions;
 import org.javastro.ivoacore.pgsphere.types.Point;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * This will run a XML and JSON round trip test on the model inst
  */
-public class AdqlgeomModelTest extends AutoDBRoundTripTest<AdqltestModel, Long, ATest> {
+public class AdqlgeomModelTest extends AutoRoundTripWithValidationTest<AdqltestModel> {
 
    private ATest atest;
 
@@ -50,14 +51,4 @@ public class AdqlgeomModelTest extends AutoDBRoundTripTest<AdqltestModel, Long, 
        Assertions.assertTrue(atestread.getApoly().equals(atest.getApoly()));
 
     }
-
-   @Override
-   public ATest entityForDb() {
-      return atest;
-   }
-
-   @Override
-   public void testEntity(ATest e) {
-      //TODO actually run some tests
-   }
 }
