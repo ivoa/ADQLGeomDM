@@ -127,11 +127,14 @@ publishing {
         // TODO really want to publish to a repo run by the IVOA
         maven {
             name = "uksrcrepo"
-            url = uri("https://repo.dev.uksrc.org/repository/maven-snapshots/")
             credentials {
                 username = (findProperty("uksrcNexusUsername") ?: System.getenv("UKSRC_REPO_USERNAME")) as String?
                 password = (findProperty("uksrcNexusPassword") ?: System.getenv("UKSRC_REPO_PASSWORD")) as String?
             }
+            val releasesRepoUrl = uri("https://repo.dev.uksrc.org/repository/maven-releases/")
+            val snapshotsRepoUrl = uri("https://repo.dev.uksrc.org/repository/maven-snapshots/")
+            url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+
         }
 
     }
