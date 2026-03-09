@@ -3,6 +3,7 @@ plugins {
     id("net.ivoa.vo-dml.vodmltools") version "0.5.30"
  //   id("org.kordamp.gradle.jandex") version "1.1.0"
     `maven-publish`
+    signing
 }
 group = "net.ivoa.dm"
 version = "0.9-SNAPSHOT"
@@ -139,3 +140,16 @@ publishing {
 
     }
 }
+
+extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications["maven"])
+
+}
+
+tasks.withType<Sign>().configureEach {
+    onlyIf("isReleaseVersion is set") { project.extra["isReleaseVersion"] as Boolean }
+}
+
