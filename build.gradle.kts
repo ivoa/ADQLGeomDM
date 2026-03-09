@@ -145,7 +145,7 @@ extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 
 signing {
     useGpgCmd()
-    sign(publishing.publications["maven"])
+    sign(publishing.publications["mavenJava"])
 
 }
 
