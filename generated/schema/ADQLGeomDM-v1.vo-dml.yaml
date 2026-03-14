@@ -1,0 +1,149 @@
+components:
+  schemas:
+    Point:
+      type: "object"
+      description: "location on the sky in spherical coordinates"
+      properties:
+        alpha:
+          type: "number"
+          built-in: "true"
+          description: "longitude angle"
+        delta:
+          type: "number"
+          built-in: "true"
+          description: "latitude angle"
+      required:
+      - "alpha"
+      - "delta"
+      additionalProperties: false
+    Line:
+      type: "object"
+      description: "A line defined on the celestial sphere. If the distance between\
+        \ begin and end is 180° (π), this function returns an error because the location\
+        \ of the line is undefined. However, if longitudes of begin and end are equal,\
+        \ pgSphere assumes a meridian and returns the corresponding spherical line."
+      properties:
+        begin:
+          $ref: "#/components/schemas/Point"
+          description: "start point of line"
+        end:
+          $ref: "#/components/schemas/Point"
+          description: "end point of line"
+      required:
+      - "begin"
+      - "end"
+      additionalProperties: false
+    Shape:
+      type: "object"
+      description: "base type of all shapes"
+      properties:
+        '@type':
+          type: "string"
+      required:
+      - "@type"
+    Circle:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "a circular region on the sky"
+        properties:
+          center:
+            $ref: "#/components/schemas/Point"
+            description: "the centre of the circle"
+          radius:
+            type: "number"
+            built-in: "true"
+            description: "the radius of the circle"
+        required:
+        - "center"
+        - "radius"
+      unevaluatedProperties: false
+    Ellipse:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "an elliptical region on the sky"
+        properties:
+          major_axis:
+            type: "number"
+            built-in: "true"
+            description: "major axis size in radians"
+          minor_axis:
+            type: "number"
+            built-in: "true"
+            description: "minor axis size in radians"
+          center:
+            $ref: "#/components/schemas/Point"
+            description: "the centre of the circle"
+          pos_angle:
+            type: "number"
+            built-in: "true"
+            description: "The position angle pos is defined as a counterclockwise\
+              \ rotation around the ellipse center and is zero, if the ellipse is\
+              \ “parallel to the equator”"
+        required:
+        - "major_axis"
+        - "minor_axis"
+        - "center"
+        - "pos_angle"
+      unevaluatedProperties: false
+    MultiShape:
+      type: "object"
+      description: "multiple simple shapes describing regions as a single value"
+      properties:
+        shapes:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Shape"
+          description: ""
+      required:
+      - "shapes"
+      additionalProperties: false
+    Polygon:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "a simple polygon region on the sky defined a sequence of points\
+          \ connected by great-circle segments"
+        properties:
+          points:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/Point"
+            description: "the points that make up the polygon"
+        required:
+        - "points"
+      unevaluatedProperties: false
+    Box:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "a simple bounding box"
+        properties:
+          pos_sw:
+            $ref: "#/components/schemas/Point"
+            description: "south-west edge of the box"
+          pos_ne:
+            $ref: "#/components/schemas/Point"
+            description: "north-east edge of the box"
+        required:
+        - "pos_sw"
+        - "pos_ne"
+      unevaluatedProperties: false
+    Interval:
+      type: "object"
+      description: "a set of numeric values defined by a lower and upper bound (bounds\
+        \ included: [a,b])"
+      properties:
+        lower:
+          type: "number"
+          built-in: "true"
+          description: ""
+        upper:
+          type: "number"
+          built-in: "true"
+          description: ""
+      required:
+      - "lower"
+      - "upper"
+      additionalProperties: false
