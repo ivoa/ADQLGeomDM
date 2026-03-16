@@ -28,7 +28,7 @@ jobs:
       run: ./gradlew publish
       env:
         UKSRC_REPO_USERNAME: ${{ secrets.UKSRC_REPO_USERNAME }}
-        UKSRC_REPO_PASSWORD: $${ secrets.UKSRC_REPO_PASSWORD }}
+        UKSRC_REPO_PASSWORD: ${{ secrets.UKSRC_REPO_PASSWORD }}
 
 
 
