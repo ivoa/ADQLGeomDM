@@ -11,6 +11,12 @@ Further information in the [ADQLGeomDM documentation](https://ivoa.github.io/ADQ
 
 The source for the model is in [model/ADQLGeomDM-v1.vodsl](model/ADQLGeomDM-v1.vodsl)
 
+[![Publish To Repository](https://github.com/ivoa/ADQLGeomDM/actions/workflows/publish.yml/badge.svg)](https://github.com/ivoa/ADQLGeomDM/actions/workflows/publish.yml)
+
+<img alt="Maven metadata URL" src="https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Frepo.dev.uksrc.org%2Frepository%2Fmaven-public%2Fnet%2Fivoa%2Fdm%2FADQLGeomDM%2Fmaven-metadata.xml&link=https%3A%2F%2Frepo.dev.uksrc.org%2F%23browse%2Fsearch%3Dattributes.maven2.artifactId%253DADQLGeomDM%2520AND%2520attributes.maven2.groupId%253Dnet.ivoa.dm%3ANX.coreui.model.Component-8&link=https%3A%2F%2Frepo.dev.uksrc.org%2Fservice%2Frest%2Frepository%2Fbrowse%2Fmaven-public%2Fnet%2Fivoa%2Fdm%2FADQLGeomDM%2F">
+
+
+
 ```
 gradle test
 ```
