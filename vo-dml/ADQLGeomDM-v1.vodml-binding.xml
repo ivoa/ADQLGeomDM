@@ -9,7 +9,7 @@
         <type-mapping>
             <vodml-id>Point</vodml-id>
             <java-type jpa-atomic="true">org.javastro.ivoacore.pgsphere.types.Point</java-type>
-            <tap-type>Point</tap-type>
+            <tap-type>POINT</tap-type>
         </type-mapping>
     </model>
 </m:mappedModels>
