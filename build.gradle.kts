@@ -1,7 +1,7 @@
 plugins {
     // this plugin provides all the vo-dml functionality
-    id("net.ivoa.vo-dml.vodmltools") version "0.5.30"
- //   id("org.kordamp.gradle.jandex") version "1.1.0"
+    id("net.ivoa.vo-dml.vodmltools") version "0.5.31"
+    id("org.kordamp.gradle.jandex") version "1.1.0"
     `maven-publish`
     signing
 }
@@ -30,6 +30,10 @@ vodml {
 
 tasks.test {
     useJUnitPlatform()
+
+}
+tasks.compileTestJava { //gradle forces us to make this declaration.
+    mustRunAfter(tasks.jandex)
 }
 
 dependencies {
@@ -92,7 +96,9 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
+    withSourcesJar()
 }
+tasks.withType<Jar> { duplicatesStrategy = DuplicatesStrategy.INCLUDE } //IMPL bugfix - see https://stackoverflow.com/questions/67265308/gradle-entry-classpath-is-a-duplicate-but-no-duplicate-handling-strategy-has-b
 
 
 publishing {
