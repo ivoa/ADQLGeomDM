@@ -2,9 +2,14 @@
 /.gradle/
 /build/
 
-/mkdocs.yml
-/allnav.yml
-/doc/site/generated/
-/doc/std/vodml-generated/
-/site/
+/ADQLGeomDM/mkdocs.yml
+/ADQLGeomDM/allnav.yml
+/ADQLGeomDM/doc/site/generated/
+/ADQLGeomDM/doc/std/vodml-generated/
+/ADQLGeomDM/site/
 
+/ADQLGeomDM/build/
+/testmodel/build/
+/testmodel/.gradle/
+/ADQLGeomDM/mkdocs.yml
+/ADQLGeomDM/doc/site/generated/

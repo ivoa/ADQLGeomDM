@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 https://www.ivoa.net/xml/VODML/vo-dml-v1.xsd" 
+              vodmlVersion="1.1">	<!-- file generated from VODSL - needs validatation against v1.1 of schema  --> 
+      <name>adqltest</name>
+      <description>The Testing the geometry model</description> 
+      <uri/>
+      <title></title>
+      <author>Paul Harrison</author>
+      <version>1.0</version>
+      <lastModified>2026-08-21T19:23:36Z</lastModified>
+      <import>
+        <name>ivoa</name>
+        <version>1.0</version>
+        <url>IVOA-v1.0.vo-dml.xml</url>
+        <documentationURL>not known</documentationURL>
+      </import>
+      <import>
+        <name>adqlgeom</name>
+        <version>1.0</version>
+        <url>ADQLGeomDM-v1.vo-dml.xml</url>
+        <documentationURL>not known</documentationURL>
+      </import>
+            <objectType>
+               <vodml-id>ATest</vodml-id>
+               <name>ATest</name>
+               <description>A test object</description>	    
+               <attribute>
+                 <vodml-id>ATest.acircle</vodml-id>
+                 <name>acircle</name>
+                 <description>a circle</description>	    
+                 <datatype>
+                    <vodml-ref>adqlgeom:Circle</vodml-ref>
+                 </datatype>
+                 <multiplicity>
+                   <minOccurs>1</minOccurs>
+                   <maxOccurs>1</maxOccurs>
+                 </multiplicity>
+               </attribute>
+               <attribute>
+                 <vodml-id>ATest.aninterval</vodml-id>
+                 <name>aninterval</name>
+                 <description>an interval</description>	    
+                 <datatype>
+                    <vodml-ref>adqlgeom:Interval</vodml-ref>
+                 </datatype>
+                 <multiplicity>
+                   <minOccurs>1</minOccurs>
+                   <maxOccurs>1</maxOccurs>
+                 </multiplicity>
+               </attribute>
+               <attribute>
+                 <vodml-id>ATest.apoint</vodml-id>
+                 <name>apoint</name>
+                 <description>a point</description>	    
+                 <datatype>
+                    <vodml-ref>adqlgeom:Point</vodml-ref>
+                 </datatype>
+                 <multiplicity>
+                   <minOccurs>1</minOccurs>
+                   <maxOccurs>1</maxOccurs>
+                 </multiplicity>
+               </attribute>
+               <attribute>
+                 <vodml-id>ATest.apoly</vodml-id>
+                 <name>apoly</name>
+                 <description>a polygon</description>	    
+                 <datatype>
+                    <vodml-ref>adqlgeom:Polygon</vodml-ref>
+                 </datatype>
+                 <multiplicity>
+                   <minOccurs>1</minOccurs>
+                   <maxOccurs>1</maxOccurs>
+                 </multiplicity>
+               </attribute>
+            </objectType>
+</vo-dml:model>

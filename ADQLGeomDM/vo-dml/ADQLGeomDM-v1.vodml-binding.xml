@@ -6,6 +6,7 @@
         <file>ADQLGeomDM-v1.vo-dml.xml</file> <!-- this is the local file name -->
         <java-package>org.ivoa.dm.adqlgeom</java-package> <!-- the java package for the generated code -->
         <xml-targetnamespace prefix="adqlgeom">http://ivoa.net/dm/adqlgeom/v0.1</xml-targetnamespace>
+        <json lax="true"/> <!-- this has only datatypes so need LAX for testing a top level - TODO need to have this as distinct option in vodml-tools -->
         <type-mapping>
             <vodml-id>Point</vodml-id>
             <java-type jpa-atomic="true">org.javastro.ivoacore.pgsphere.types.Point</java-type>

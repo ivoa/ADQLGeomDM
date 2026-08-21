@@ -1,14 +1,13 @@
-package org.ivoa.dm.adqlgeom.tests;
+package net.ivoa.dm.adqlgeom.test;
 /*
  * Created on 10/05/2023 by Paul Harrison (paul.harrison@manchester.ac.uk).
  */
 
-import net.ivoa.dm.adqlgeom.test.AdqltestModel;
 import org.ivoa.dm.adqlgeom.Circle;
 import org.ivoa.dm.adqlgeom.Interval;
 import org.ivoa.dm.adqlgeom.Polygon;
-import org.ivoa.vodml.testing.AutoDBRoundTripTest;
-import net.ivoa.dm.adqlgeom.test.ATest;
+import org.ivoa.dm.adqlgeom.test.ATest;
+import org.ivoa.dm.adqlgeom.test.AdqltestModel;
 import org.ivoa.vodml.testing.AutoRoundTripWithValidationTest;
 import org.junit.jupiter.api.Assertions;
 import org.javastro.ivoacore.pgsphere.types.Point;

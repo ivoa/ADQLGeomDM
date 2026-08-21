@@ -1,0 +1,14 @@
+model adqltest (1.0) "The Testing the geometry model"
+  author "Paul Harrison"
+  
+  include "../build/tmp/IVOA-v1.0.vodsl"
+  include "../build/tmp/ADQLGeomDM-v1.vodsl"
+  
+  otype ATest "A test object" {
+
+   acircle: adqlgeom:Circle  "a circle";
+   aninterval: adqlgeom:Interval  "an interval";
+   apoint: adqlgeom:Point  "a point";
+   apoly: adqlgeom:Polygon  "a polygon";
+
+  }

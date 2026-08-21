@@ -1,8 +1,8 @@
-rootProject.name = "ADQLGeomDM"
+rootProject.name = "ADQLGeomDMRoot"
 
 dependencyResolutionManagement {
     repositories {
-        mavenLocal()
+
         mavenCentral()
         /*
         add this repository to pick up the SNAPSHOT version of the IVOA base library - in the future when this
@@ -11,6 +11,7 @@ dependencyResolutionManagement {
         maven {
             url= uri("https://repo.dev.uksrc.org/repository/maven-public/")
         }
+        mavenLocal()
     }
 
 }
@@ -21,3 +22,5 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+include("ADQLGeomDM")
+include("testmodel")
