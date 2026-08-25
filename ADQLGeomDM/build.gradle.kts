@@ -6,7 +6,7 @@ plugins {
     signing
 }
 group = "net.ivoa.dm"
-version = "0.9-SNAPSHOT"
+version = "0.9.0"
 
 vodml {
     vodmlDir.set(file("vo-dml"))
@@ -43,7 +43,7 @@ dependencies {
     //all data models will want to depend on the base model at least
 
     api("net.ivoa.vo-dml:ivoa-base:1.0-SNAPSHOT") //use API if model exposes any of these base types in API
-    api("org.javastro.ivoa.core:pgsphere:0.9.1-SNAPSHOT")
+    api("org.javastro.ivoa.core:pgsphere:0.9.1")
 
     // the dependencies below are related to testing
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")

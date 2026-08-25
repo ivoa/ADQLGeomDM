@@ -1,15 +1,15 @@
 name: site deploy
 on:
-  push:
-    branches:
-      - master
-      - main
+  workflow_dispatch:
+  release:
+    types: [ published ]
+
 permissions:
   contents: write
 env:
   THISDIR: ${{ github.workspace }}
 jobs:
-  deploy:
+  sitedeploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
