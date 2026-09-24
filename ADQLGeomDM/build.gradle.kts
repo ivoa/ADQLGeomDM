@@ -6,7 +6,7 @@ plugins {
     signing
 }
 group = "net.ivoa.dm"
-version = "0.9.0"
+version = "0.9.1"
 
 vodml {
     vodmlDir.set(file("vo-dml"))
@@ -55,7 +55,7 @@ dependencies {
     testImplementation("org.javastro:jaxbjpa-utils:0.2.3")
     testImplementation("org.javastro:jaxbjpa-utils:0.2.3:test")
     testImplementation("org.geolatte:geolatte-geom:1.9.0")
-    implementation("org.hibernate.orm:hibernate-spatial:6.5.3.Final")
+    testImplementation("org.hibernate.orm:hibernate-spatial:7.2.6.Final")
     testImplementation("org.orbisgis:h2gis:2.2.5")
 }
 
