@@ -11,10 +11,26 @@ Further information in the [ADQLGeomDM documentation](https://ivoa.github.io/ADQ
 
 The source for the model is in [model/ADQLGeomDM-v1.vodsl](model/ADQLGeomDM-v1.vodsl)
 
-[![Publish To Repository](https://github.com/ivoa/ADQLGeomDM/actions/workflows/publish.yml/badge.svg)](https://github.com/ivoa/ADQLGeomDM/actions/workflows/publish.yml)
+[![Publish To Repository](https://github.com/ivoa/ADQLGeomDM/actions/workflows/publish.yml/badge.svg)](https://github.com/ivoa/ADQLGeomDM/actions/workflows/publish.yml) to the [UKSRC repository](https://repo.dev.uksrc.org/#browse/search/generic=attributes.maven2.groupId%3Dnet.ivoa.dm%20AND%20attributes.maven2.artifactId%3DADQLGeomDM)
 
-<img alt="Maven metadata URL" src="https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Frepo.dev.uksrc.org%2Frepository%2Fmaven-public%2Fnet%2Fivoa%2Fdm%2FADQLGeomDM%2Fmaven-metadata.xml&link=https%3A%2F%2Frepo.dev.uksrc.org%2F%23browse%2Fsearch%3Dattributes.maven2.artifactId%253DADQLGeomDM%2520AND%2520attributes.maven2.groupId%253Dnet.ivoa.dm%3ANX.coreui.model.Component-8&link=https%3A%2F%2Frepo.dev.uksrc.org%2Fservice%2Frest%2Frepository%2Fbrowse%2Fmaven-public%2Fnet%2Fivoa%2Fdm%2FADQLGeomDM%2F">
 
+
+To use the library in your project, add the following dependency to your build.gradle.kts file:
+
+```kotlin
+dependencies {
+    implementation("net.ivoa.dm:ADQLGeomDM:0.9.0")
+}
+```
+
+As the library uses pgsphere specific types, unit testing is more difficult - however by depending on 
+
+```kotlin
+dependencies {
+    testImplementation("net.ivoa.dm.testing:ADQLGeomDMTesting:0.1-SNAPSHOT")
+}
+```
+and then using the `net.ivoa.dm.adqlgeom.test.ADQLGeomDBRoundTripTest` as the base class for your tests, you can get a test h2db database with geometric types converted to the hibernate spatial equivalent.
 
 
 ```

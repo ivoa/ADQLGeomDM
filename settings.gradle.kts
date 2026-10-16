@@ -24,3 +24,4 @@ pluginManagement {
 }
 include("ADQLGeomDM")
 include("testmodel")
+project(":testmodel").name = "ADQLGeomDMTesting"

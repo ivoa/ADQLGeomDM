@@ -12,5 +12,10 @@
             <java-type jpa-atomic="true">org.javastro.ivoacore.pgsphere.types.Point</java-type>
             <tap-type>POINT</tap-type>
         </type-mapping>
+        <type-mapping>
+            <vodml-id>Polygon</vodml-id>
+            <java-type jpa-atomic="true">org.javastro.ivoacore.pgsphere.types.Polygon</java-type>
+            <tap-type>POLYGON</tap-type>
+        </type-mapping>
     </model>
 </m:mappedModels>

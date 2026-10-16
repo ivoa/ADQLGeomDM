@@ -5,10 +5,9 @@ package net.ivoa.dm.adqlgeom.test;
 
 import org.ivoa.dm.adqlgeom.Circle;
 import org.ivoa.dm.adqlgeom.Interval;
-import org.ivoa.dm.adqlgeom.Polygon;
 import org.ivoa.dm.adqlgeom.test.ATest;
 import org.ivoa.dm.adqlgeom.test.AdqltestModel;
-import org.ivoa.vodml.testing.AutoRoundTripWithValidationTest;
+import org.javastro.ivoacore.pgsphere.types.Polygon;
 import org.junit.jupiter.api.Assertions;
 import org.javastro.ivoacore.pgsphere.types.Point;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.List;
 /**
  * This will run a XML and JSON round trip test on the model inst
  */
-public class AdqlgeomModelTest extends AutoRoundTripWithValidationTest<AdqltestModel> {
+public class AdqlgeomModelTest extends ADQLGeomDBRoundTripTest<AdqltestModel,Long,ATest> {
 
    private ATest atest;
 
@@ -31,7 +30,7 @@ public class AdqlgeomModelTest extends AutoRoundTripWithValidationTest<AdqltestM
                 t.aninterval = new Interval(4.5, 7.1);
                 t.apoint = new Point(5.0, 6.0);
                 t.apoly = new Polygon(List.of(new Point[]{new Point(5.0, 6.0), new Point(5.0, 6.5), new Point(6.0, 3.7),
-                      new Point(4.0, 6.0), new Point(1.0, 2.0),}));
+                      new Point(4.0, 6.0), new Point(1.0, 2.0), new Point(5.0, 6.0)}));
 //               t.amultishape = new MultiShape(List.of(
 //                     new Circle(new Point(1.1, 2.4), 4.0), new Circle(new Point(2.4, 4.4), 2.1)
 //               ));
@@ -50,4 +49,14 @@ public class AdqlgeomModelTest extends AutoRoundTripWithValidationTest<AdqltestM
        Assertions.assertTrue(atestread.getApoly().equals(atest.getApoly()));
 
     }
+
+   @Override
+   public ATest entityForDb() {
+      return atest;
+   }
+
+   @Override
+   public void testEntity(ATest e) {
+     //TODO
+   }
 }
