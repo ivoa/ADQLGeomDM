@@ -1,0 +1,186 @@
+components:
+  schemas:
+    Point:
+      type: "object"
+      description: "location on the sky in spherical coordinates"
+      properties:
+        alpha:
+          type: "number"
+          description: "longitude angle"
+        delta:
+          type: "number"
+          description: "latitude angle"
+      required:
+      - "alpha"
+      - "delta"
+    Line:
+      type: "object"
+      description: "A line defined on the celestial sphere. If the distance between\
+        \ begin and end is 180° (π), this function returns an error because the location\
+        \ of the line is undefined. However, if longitudes of begin and end are equal,\
+        \ pgSphere assumes a meridian and returns the corresponding spherical line."
+      properties:
+        begin:
+          $ref: "#/components/schemas/Point"
+          description: "start point of line"
+        end:
+          $ref: "#/components/schemas/Point"
+          description: "end point of line"
+      required:
+      - "begin"
+      - "end"
+    Shape:
+      type: "object"
+      description: "base type of all shapes"
+      properties: {}
+      required: []
+    Shape_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            adqlgeom:Shape:
+              $ref: "#/components/schemas/Shape"
+        - type: "object"
+          properties:
+            adqlgeom:Circle:
+              $ref: "#/components/schemas/Circle"
+        - type: "object"
+          properties:
+            adqlgeom:Ellipse:
+              $ref: "#/components/schemas/Ellipse"
+        - type: "object"
+          properties:
+            adqlgeom:Polygon:
+              $ref: "#/components/schemas/Polygon"
+        - type: "object"
+          properties:
+            adqlgeom:Box:
+              $ref: "#/components/schemas/Box"
+    Circle:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "a circular region on the sky"
+        properties:
+          center:
+            $ref: "#/components/schemas/Point"
+            description: "the centre of the circle"
+          radius:
+            type: "number"
+            description: "the radius of the circle"
+        required:
+        - "center"
+        - "radius"
+    Circle_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            adqlgeom:Circle:
+              $ref: "#/components/schemas/Circle"
+    Ellipse:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "an elliptical region on the sky"
+        properties:
+          major_axis:
+            type: "number"
+            description: "major axis size in radians"
+          minor_axis:
+            type: "number"
+            description: "minor axis size in radians"
+          center:
+            $ref: "#/components/schemas/Point"
+            description: "the centre of the circle"
+          pos_angle:
+            type: "number"
+            description: "The position angle pos is defined as a counterclockwise\
+              \ rotation around the ellipse center and is zero, if the ellipse is\
+              \ “parallel to the equator”"
+        required:
+        - "major_axis"
+        - "minor_axis"
+        - "center"
+        - "pos_angle"
+    Ellipse_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            adqlgeom:Ellipse:
+              $ref: "#/components/schemas/Ellipse"
+    MultiShape:
+      type: "object"
+      description: "multiple simple shapes describing regions as a single value"
+      properties:
+        shapess:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Shape_wrapper"
+          description: ""
+      required:
+      - "shapess"
+    Polygon:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "a simple polygon region on the sky defined a sequence of points\
+          \ connected by great-circle segments"
+        properties:
+          pointss:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/Point"
+            description: "the points that make up the polygon"
+        required:
+        - "pointss"
+    Polygon_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            adqlgeom:Polygon:
+              $ref: "#/components/schemas/Polygon"
+    Box:
+      allOf:
+      - $ref: "#/components/schemas/Shape"
+      - type: "object"
+        description: "a simple bounding box"
+        properties:
+          pos_sw:
+            $ref: "#/components/schemas/Point"
+            description: "south-west edge of the box"
+          pos_ne:
+            $ref: "#/components/schemas/Point"
+            description: "north-east edge of the box"
+        required:
+        - "pos_sw"
+        - "pos_ne"
+    Box_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            adqlgeom:Box:
+              $ref: "#/components/schemas/Box"
+    Interval:
+      type: "object"
+      description: "a set of numeric values defined by a lower and upper bound (bounds\
+        \ included: [a,b])"
+      properties:
+        lower:
+          type: "number"
+          description: ""
+        upper:
+          type: "number"
+          description: ""
+      required:
+      - "lower"
+      - "upper"

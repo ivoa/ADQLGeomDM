@@ -1,0 +1,276 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json",
+  "title" : "",
+  "description" : "The geometry types in ADQL/PGSphere",
+  "type" : "object",
+  "properties" : {
+    "AdqlgeomModel" : {
+      "type" : "object",
+      "properties" : {
+        "refs" : {
+          "type" : "object",
+          "properties" : {
+            "$comment" : "placeholder to make commas easier!"
+          },
+          "additionalProperties" : false
+        }
+      },
+      "additionalProperties" : false
+    }
+  },
+  "$defs" : {
+    "$comment" : "placeholder to make commas easier!",
+    "Point" : {
+      "type" : "object",
+      "description" : "location on the sky in spherical coordinates",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "alpha" : {
+          "type" : "number",
+          "description" : "longitude angle"
+        },
+        "delta" : {
+          "type" : "number",
+          "description" : "latitude angle"
+        }
+      },
+      "required" : [ "alpha", "delta" ]
+    },
+    "Line" : {
+      "type" : "object",
+      "description" : "A line defined on the celestial sphere. If the distance between begin and end is 180° (π), this function returns an error because the location of the line is undefined. However, if longitudes of begin and end are equal, pgSphere assumes a meridian and returns the corresponding spherical line.",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "begin" : {
+          "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+          "description" : "start point of line"
+        },
+        "end" : {
+          "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+          "description" : "end point of line"
+        }
+      },
+      "required" : [ "begin", "end" ]
+    },
+    "Shape" : {
+      "type" : "object",
+      "description" : "base type of all shapes",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!"
+      },
+      "required" : [ ]
+    },
+    "Shape_wrapper" : {
+      "type" : "object",
+      "properties" : {
+        "oneOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Shape" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+            }
+          }
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Circle" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Circle"
+            }
+          }
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Ellipse" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Ellipse"
+            }
+          }
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Polygon" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Polygon"
+            }
+          }
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Box" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Box"
+            }
+          }
+        } ]
+      }
+    },
+    "Circle" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "a circular region on the sky",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "center" : {
+            "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+            "description" : "the centre of the circle"
+          },
+          "radius" : {
+            "type" : "number",
+            "description" : "the radius of the circle"
+          }
+        },
+        "required" : [ "center", "radius" ]
+      } ]
+    },
+    "Circle_wrapper" : {
+      "type" : "object",
+      "properties" : {
+        "oneOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Circle" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Circle"
+            }
+          }
+        } ]
+      }
+    },
+    "Ellipse" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "an elliptical region on the sky",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "major_axis" : {
+            "type" : "number",
+            "description" : "major axis size in radians"
+          },
+          "minor_axis" : {
+            "type" : "number",
+            "description" : "minor axis size in radians"
+          },
+          "center" : {
+            "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+            "description" : "the centre of the circle"
+          },
+          "pos_angle" : {
+            "type" : "number",
+            "description" : "The position angle pos is defined as a counterclockwise rotation around the ellipse center and is zero, if the ellipse is “parallel to the equator”"
+          }
+        },
+        "required" : [ "major_axis", "minor_axis", "center", "pos_angle" ]
+      } ]
+    },
+    "Ellipse_wrapper" : {
+      "type" : "object",
+      "properties" : {
+        "oneOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Ellipse" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Ellipse"
+            }
+          }
+        } ]
+      }
+    },
+    "MultiShape" : {
+      "type" : "object",
+      "description" : "multiple simple shapes describing regions as a single value",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "shapess" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape_wrapper"
+          },
+          "description" : ""
+        }
+      },
+      "required" : [ "shapess" ]
+    },
+    "Polygon" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "a simple polygon region on the sky defined a sequence of points connected by great-circle segments",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "pointss" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point"
+            },
+            "description" : "the points that make up the polygon"
+          }
+        },
+        "required" : [ "pointss" ]
+      } ]
+    },
+    "Polygon_wrapper" : {
+      "type" : "object",
+      "properties" : {
+        "oneOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Polygon" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Polygon"
+            }
+          }
+        } ]
+      }
+    },
+    "Box" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "a simple bounding box",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "pos_sw" : {
+            "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+            "description" : "south-west edge of the box"
+          },
+          "pos_ne" : {
+            "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Point",
+            "description" : "north-east edge of the box"
+          }
+        },
+        "required" : [ "pos_sw", "pos_ne" ]
+      } ]
+    },
+    "Box_wrapper" : {
+      "type" : "object",
+      "properties" : {
+        "oneOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "adqlgeom:Box" : {
+              "$ref" : "https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json#/$defs/Box"
+            }
+          }
+        } ]
+      }
+    },
+    "Interval" : {
+      "type" : "object",
+      "description" : "a set of numeric values defined by a lower and upper bound (bounds included: [a,b])",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "lower" : {
+          "type" : "number",
+          "description" : ""
+        },
+        "upper" : {
+          "type" : "number",
+          "description" : ""
+        }
+      },
+      "required" : [ "lower", "upper" ]
+    }
+  }
+}

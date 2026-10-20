@@ -1,0 +1,1 @@
+https://ivoa.net/dm/ADQLGeomDM-v1.vo-dml.json ADQLGeomDM-v1.vo-dml.json
